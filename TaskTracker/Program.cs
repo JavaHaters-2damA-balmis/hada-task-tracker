@@ -6,9 +6,36 @@ internal class Program
     {
         Console.WriteLine("HADA TASK TRACKER!!!!!!");
 
-        List<TaskItem> tasks = new List<TaskItem>
+        List<TaskItem> tareas = new List<TaskItem>();
 
-        ListarYCompletar(tasks);
+        int siguienteId = 1;
+        bool salir = false;
+
+        while (!salir)
+        {
+            MostrarMenu();
+
+            switch (Console.ReadLine()?.Trim())
+            {
+                case "1":
+                    AnadirTarea(tareas, ref siguienteId);
+                    break;
+                case "2":
+                    ListarYCompletar(tareas);
+                    break;
+                case "0":
+                    salir = true;
+                    Console.WriteLine("¡Hasta luego!");
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida. Elige una opción del menú.");
+                    break;
+            }
+        }
+
+        ListarYCompletar(tareas);
+
+
     }
 
     public static void ListarYCompletar(List<TaskItem> tasks)
@@ -26,8 +53,7 @@ internal class Program
         Console.WriteLine();
         Console.WriteLine("=== TaskTracker ===");
         Console.WriteLine("1. Añadir tarea");
-        Console.WriteLine("2. Listar tareas");
-        Console.WriteLine("3. Completar tarea");
+        Console.WriteLine("2. Listar tareas y completar tarea");
         Console.WriteLine("0. Salir");
         Console.Write("Opción: ");
     }
