@@ -14,10 +14,12 @@ public class TaskItem
         Title = title;
         IsCompleted = false;
     }
-    public override string ToString()
-   {
-    string estado = IsCompleted ? "Completada" : "Pendiente";
 
+    public override string ToString()
+    {
+
+    string estado = IsCompleted ? "Completada" : "Pendiente";
+    
     return $"ID: {Id} | Tarea: {Title} | Estado: {estado}";
-   }
+    }
 }
