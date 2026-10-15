@@ -1,35 +1,23 @@
-﻿internal class Program
+﻿namespace TaskTracker;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        List<TaskItem> tareas = new List<TaskItem>();
+        Console.WriteLine("HADA TASK TRACKER!!!!!!");
 
-        int siguienteId = 1;
-        bool salir = false;
+        List<TaskItem> tasks = new List<TaskItem>
 
-        while (!salir)
+        ListarYCompletar(tasks);
+    }
+
+    public static void ListarYCompletar(List<TaskItem> tasks)
+    {
+        foreach (var task in tasks)
         {
-            MostrarMenu();
-
-            switch (Console.ReadLine()?.Trim())
-            {
-                case "1":
-                    AnadirTarea(tareas, ref siguienteId);
-                    break;
-                case "2":
-                    Console.WriteLine("Listar tareas: pendiente (otra rama).");
-                    break;
-                case "3":
-                    Console.WriteLine("Completar tarea: pendiente (otra rama).");
-                    break;
-                case "0":
-                    salir = true;
-                    Console.WriteLine("¡Hasta luego!");
-                    break;
-                default:
-                    Console.WriteLine("Opción no válida. Elige una opción del menú.");
-                    break;
-            }
+            task.IsCompleted = true;
+            
+            Console.WriteLine(task.ToString());
         }
     }
 
